@@ -1,0 +1,17 @@
+env/
+images/
+__pycache__/
+downloads/
+history/
+data/
+.idea/
+
+*.log
+*.jpg
+test.py
+cities.csv
+cities-test.csv
+cities.txt
+.DS_Store
+
+settings.py
