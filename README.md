@@ -1,10 +1,9 @@
-Telegram bot
-============
+Telegram bot "Dating Board Bot | Бот Знакомств"
+===============================================
 
-This is Telegram dating bot.
+This is a simple dating [Telegram bot](https://t.me/datingboardbot).
 
 Commands:
 ---------
-/start - start the bot
-
-/stop - stop the bot
+- /start - start bot
+- /stop - stop bot
