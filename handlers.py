@@ -346,6 +346,8 @@ def _send_profile(context, chat_id, user_from, reply_markup=None):
 	user_from_chat_id = user_from['chat_id']
 	text = utils.get_text(users[chat_id].get('lang'))
 	connect = text['connect']
+	# TODO: Check if user exists. If not - delete it
+	#  Example:  https://tg://user?id=1523667791
 	mention = f'[{connect}](tg://user?id={user_from_chat_id})'
 	parse_mode = 'Markdown'
 	# Fakes:
@@ -369,9 +371,9 @@ def list_profiles(context, user_to):
 	sex_req = user_to['profile']['sex_req']
 	text = utils.get_text(user_to.get('lang'))
 	# Random order
-	chat_ids = set(list(users.keys()))
-	for i in chat_ids:
-		user_from = users[i]
+	chat_ids = list(users.keys())
+	for _id in chat_ids:
+		user_from = users[_id]
 		if chat_id_to not in user_from['shown'] \
 			and user_from['status'] == 'search' \
 			and (user_from['profile']['sex_my'] == sex_req or sex_req == 'both') \

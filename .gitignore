@@ -1,8 +1,6 @@
 env/
 images/
 __pycache__/
-downloads/
-history/
 data/
 .idea/
 
