@@ -2,51 +2,31 @@ import os
 
 import requests
 from emoji import emojize
-from telegram.error import InvalidToken, RetryAfter, TimedOut, Unauthorized
+from telegram.error import Unauthorized
 
 import utils
-import texts
 
 
 users = {}
-# user:
-# {
-# 	chat_id (int): {
-#       status: 'create' / 'search',
-#       profile: {
-#           profile Object
-#           sex_my: 'male' / 'female',
-#           sex_req: 'male' / 'both' / 'female',
-#           photo: '',
-#           comment: '',
-#           username: ''
-#       },
-#       chat_id: int,
-#       shown: [chat_id, chat_id, chat_id...],
-#       awaits: True/False,
-#       lang: en/ru/uk/...
-#   }
-# }
+"""Example:
+users = {
+	123456: {
+		status: 'search',
+		profile: {
+			sex_my: 'female',
+			sex_req: 'both',
+			photo: '...',
+			comment: 'Looking for a friend',
+			username: 'abc'
+		},
+		chat_id: 123456,
+		shown: [654321, 765432, 876543],
+		awaits: True,
+		lang: 'en'
+	}
+}
+"""
 
-##############3
-# statuses:
-# sex_my
-# sex_req
-# photo
-# comment
-# confirm
-# ready
-#
-
-# class Profile:
-#
-# 	def __init__(self):    #, sex_my, sex_required):
-# 		pass
-# 		# self.sex_my = sex_my
-# 		# self.sex_required = sex_required
-#
-
-# UTILS
 
 def send_stats(update):
 	m_m = 0
@@ -223,6 +203,15 @@ def file_message(update, context):
 
 
 def create_profile(update, context):
+	"""Step by step creates a user profile.
+	While creating a user profile there are possible these statuses:
+		sex_my
+		sex_req
+		photo
+		comment
+		confirm
+		ready
+	"""
 	# Check if this user is active (is looking for a pair)
 	chat_id = update.message['chat']['id']
 	user = users[chat_id]

@@ -4,7 +4,6 @@ import json
 import os
 
 import requests
-from emoji import emojize
 from telegram import ReplyKeyboardMarkup, KeyboardButton
 
 import texts
@@ -13,17 +12,10 @@ USERS_FILE = os.path.join('.', 'data', 'users.json')
 FAKE_USERS_FILE = os.path.join('.', 'data', 'fakes.json')
 WAITLIST_FILE = os.path.join('.', 'data', 'waitlist.json')
 
+
 ##################
 # KEYBOARDS
 ##################
-
-
-# def kbrd_empty():
-# 	keyboard = ReplyKeyboardMarkup(
-# 		[[]],
-# 		resize_keyboard=True
-# 	)
-# 	return keyboard
 
 
 def kbrd_start():
@@ -152,7 +144,6 @@ def getPhoto(file_id):
 
 
 def log(update):
-	# logging.info(f"User: {update.message.chat.username}, chat id: {update.message.chat.id}, message: {update.message.text}")
 	logging.info(f'update: {update}')
 
 
@@ -177,9 +168,3 @@ def understand_gender(answer):
 		return 'both'
 	else:
 		return None
-
-
-# "test": {"status": "search", "profile": {"sex_my": "male", "sex_req": "female",
-#         "photo": "",
-#             "comment": "", "username": ""
-#         }, "chat_id": "test", "shown": [], "awaits": false}
